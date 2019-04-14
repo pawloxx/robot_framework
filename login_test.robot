@@ -2,8 +2,10 @@
 Library  SeleniumLibrary
 Resource  login_test_resources.robot
 
+
 TEST SETUP  Start
 TEST TEARDOWN  Stop
+
 
 *** Test Cases ***
 Valid Login test
@@ -14,11 +16,11 @@ Valid Login test
   Page Should Not Contain  Warning: No match for E-Mail Address and/or Password
 
 Invalid Login test
-  Input Text  name=email  #wpisz niezarejestrowawny email
-  Input Text  name=password  #podaj fakowe hasło
+  Input Text  name=email  ${WRONG_EMAIL} #wpisz niezarejestrowawny email/
+  Input Text  name=password  ${WRONG_PASS} #podaj fakowe hasło/
   Click Button  Login
   Page Should Contain  Warning: No match for E-Mail Address and/or Password
-  Page Should Contain  Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.
+  #Page Should Contain  Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.
 
 Warning after 5 login tries without credentials
   Click button  Login
