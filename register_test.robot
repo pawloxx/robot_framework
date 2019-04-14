@@ -4,7 +4,7 @@ Library  SeleniumLibrary
 Resource  register_test_resources.robot
 
 TEST SETUP  Start
-#TEST TEARDOWN  Stop
+TEST TEARDOWN  Stop
 
 *** Test Cases ***
 Go to Register Page
@@ -17,10 +17,12 @@ Registration
   Click Link  Register
   Input text  name=firstname  Tomek
   Input text  name=lastname  p2k
-  Input text  name=email  p@k.pl
+  Input text  name=email  pdd4522@k.pl
   Input text  name=telephone  111111111
   Input text  name=password  1234
   Input text  name=confirm  1234
   select checkbox  name=agree
   Click button  Continue
   Page should contain  Congratulations! Your new account has been successfully created!
+  Click link  Continue
+  Page should contain  Logout
