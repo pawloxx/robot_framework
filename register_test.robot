@@ -1,17 +1,17 @@
 *** Settings ***
 Documentation    Suite description
 Library  SeleniumLibrary
-Resource  register_test_resources.robot
+Resource  resources.robot
+Resource  product_variables.robot
 
-TEST SETUP  Start
+TEST SETUP  StartHOME
 TEST TEARDOWN  Stop
 
 *** Test Cases ***
 Go to Register Page
   Click Element  //*[@id="top-links"]/ul/li[2]/a/span[2]
   Click Link  Register
-  Page should contain  If you already have an account with us, please login at the login page
-  [Teardown]  Close browser
+  Page should contain  ${HAVEACCOUNT}
 Registration
   Click Element  //*[@id="top-links"]/ul/li[2]/a/span[2]
   Click Link  Register
@@ -23,6 +23,6 @@ Registration
   Input text  name=confirm  1234
   select checkbox  name=agree
   Click button  Continue
-  Page should contain  Congratulations! Your new account has been successfully created!
+  Page should contain  ${GRATS}
   Click link  Continue
   Page should contain  Logout

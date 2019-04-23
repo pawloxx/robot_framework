@@ -1,9 +1,10 @@
 *** Settings ***
 Library  SeleniumLibrary
-Resource  login_test_resources.robot
+Resource  resources.robot
+Resource  user_variables.robot
+Resource  product_variables.robot
 
-
-TEST SETUP  Start
+TEST SETUP  StartLOGIN
 TEST TEARDOWN  Stop
 
 
@@ -28,7 +29,7 @@ Warning after 5 login tries without credentials
   Click button  Login
   Click button  Login
   Click button  Login
-  Page Should Contain  Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.
+  Page Should Contain  ${WARN_LOGIN_ATTEMPTS}
 
 
 
